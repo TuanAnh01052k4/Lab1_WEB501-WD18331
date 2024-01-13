@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="inputString">Input:</label>
+        <input type="text" id="inputString">
+      </div>
+    
+      <button onclick="convertString()">Convert</button>
+    
+      <div>
+        <label for="outputString">Output:</label>
+        <span id="outputString"></span>
+      </div>
+    
+      <script>
+        function convertString() {
+          var inputString = document.getElementById("inputString").value;
+    
+          // Remove special characters and convert to camelCase
+          var formattedString = convertToCamelCase(inputString);
+    
+          // Display the formatted string
+          document.getElementById("outputString").textContent = formattedString;
+        }
+    
+        function convertToCamelCase(input) {
+          // Remove special characters and split the string into words
+          var words = input.replace(/[^a-zA-Z0-9]/g, ' ').split(' ');
+    
+          // Convert the words to camelCase
+          var camelCaseString = words.map(function(word, index) {
+            if (index === 0) {
+              // Keep the first word as it is
+              return word.toLowerCase();
+            } else {
+              // Capitalize the first letter of each subsequent word
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            }
+          }).join('');
+    
+          return camelCaseString;
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style type="text/css" media="screen">
+    .user_item {
+        color: green;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
+<ul id="target">
+
+</ul>
+
+<script>
+    var users = [
+      { id: 1, name: "James Smith", gender: 1 },
+      { id: 2, name: "Isla Brown", gender: 2 },
+      { id: 3, name: "Amelia Davies", gender: 2 },
+      { id: 4, name: "Jacob Evans", gender: 1 }
+    ];
+  
+    var target = document.querySelector("#target");
+  
+    // Sử dụng map để tạo mảng các chuỗi thông tin
+    var userStrings = users.map(function(user) {
+      var genderString = user.gender === 1 ? "male" : "female";
+      return user.name + " - " + genderString;
+    });
+  
+    // Sử dụng forEach để duyệt qua mảng các chuỗi và tạo các thẻ li
+    userStrings.forEach(function(userString, index) {
+      // Tạo thẻ li
+      var liElement = document.createElement("li");
+  
+      // Đặt class cho thẻ li
+      liElement.classList.add("user_item");
+  
+      // Đặt nội dung cho thẻ li
+      liElement.textContent = (index + 1) + "- " + userString;
+  
+      // Thêm thẻ li vào phần tử có id="target"
+      target.appendChild(liElement);
+    });
+  </script>
+</body>
+</html>
